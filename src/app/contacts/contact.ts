@@ -1,6 +1,6 @@
 export class Contact {
   _id?: string;
-  name: string;
+  nome: string;
   email: string;
   Telefone: {
     celular: string;
