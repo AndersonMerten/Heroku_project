@@ -42,13 +42,27 @@
         <version>${tomcat.version}</version>
     </dependency>
   </dependencies>
-
-   	<build>
-		<plugins>
-			<plugin>
+  <build>
+    <finalName>embeddedTomcatSample</finalName>
+    <plugins>
+        <plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
+            <configuration>
+                <assembleDirectory>target</assembleDirectory>
+                <programs>
+                    <program>
+                        <mainClass>launch.Main</mainClass>
+                        <name>webapp</name>
+                    </program>
+                </programs>
+            </configuration>
+            <executions>
+                <execution>
+                    <phase>package</phase>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
+  </build>
 </project>
