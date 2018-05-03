@@ -20,7 +20,7 @@ public class PostController {
     @GetMapping("/")
     public ModelAndView findAll() {
          
-        ModelAndView mv = new ModelAndView("/post");
+        ModelAndView mv = new ModelAndView("post");
         mv.addObject("posts", service.findAll());
          
         return mv;
@@ -29,7 +29,7 @@ public class PostController {
     @GetMapping("/add")
     public ModelAndView add(Post post) {
          
-        ModelAndView mv = new ModelAndView("/postAdd");
+        ModelAndView mv = new ModelAndView("postAdd");
         mv.addObject("post", post);
          
         return mv;
