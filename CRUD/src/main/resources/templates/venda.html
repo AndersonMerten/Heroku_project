@@ -1,17 +1,46 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
-    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Vendas</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"></link>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" >
+ <head th:include="layout :: htmlhead" th:with="title='Vendas'"></head>
 <body>
-   Essa é a tela de venda!!
+ 
+  <div th:replace="layout :: navbar">(navbar)</div>
+  
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <strong>Venda</strong>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-sm table-striped table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Valor</th>
+                            <th>Data</th>
+                            <th>Modificar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="venda : ${vendas}">
+                            <td th:text="${venda.valor}"></td>
+                            <td th:text="${#dates.format(venda.data, 'dd/MM/yyyy')}"></td>
+                            <td>
+                                <div class="btn-group pull-right">
+                                    <a class="btn btn-sm btn-primary" th:href="@{/venda/edit/{id}(id=${venda.id})}" >Editar</a>
+                                    <a class="delete btn btn-sm btn-danger" th:href="@{/venda/delete/{id}(id=${venda.id})}">Excluir</a>
+                               </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <a class="btn btn-sm btn-success" th:href="@{/venda/add/}" >Adicionar</a>
+        </div>
+    </div>
+    
+    <div th:include="layout :: footer" id="footer">(footer)</div>
 </body>
 </html>

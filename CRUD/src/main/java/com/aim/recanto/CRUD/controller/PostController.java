@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import com.aim.recanto.CRUD.model.Post;
+import com.aim.recanto.CRUD.model.Venda;
 import com.aim.recanto.CRUD.service.PostService;
  
 @Controller
@@ -36,7 +37,8 @@ public class PostController {
          
         return mv;
     }
-     
+    
+    
     @GetMapping("/edit/{id}")
     public ModelAndView edit(@PathVariable("id") Long id) {
          
