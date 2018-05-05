@@ -23,13 +23,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Orquidário Recanto das Flores</a>
+          <a class="navbar-brand" href="http://www.orquidariorecantodasflores.com.br/">Orquidário Recanto das Flores</a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="/venda/">Vendas</a></li>
-            <li><a href="/post/">Devedores</a></li>
-            <li><a href="#contact">Pedidos</a></li>
+             	<li th:classappend="${#httpServletRequest.getRequestURI() == '/venda/' ? 'active':''}"><a th:href="@{/venda/}"><span>Venda</span></a></li>
+			    <li th:classappend="${#httpServletRequest.getRequestURI() == '/post/' ? 'active':''}"><a th:href="@{/post/}"><span>Post</span></a></li>
+			    <li th:classappend="${#httpServletRequest.getRequestURI() == '/devedor/' ? 'active':''}"><a th:href="@{/devedor/}"><span>Devedor</span></a></li>
+			    <li role="separator" ></li>
           </ul>
         </div>
       </div>

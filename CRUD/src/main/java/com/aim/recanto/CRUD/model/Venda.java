@@ -1,6 +1,6 @@
 package com.aim.recanto.CRUD.model;
 
-import java.io.Serializable;
+
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -22,7 +22,7 @@ public class Venda {
 
 	@Column(nullable = false)
 	@NotNull(message = "É necessário informar um valor.")
-    public float Valor;
+    private float Valor;
 
 
     @Column(nullable = false)
