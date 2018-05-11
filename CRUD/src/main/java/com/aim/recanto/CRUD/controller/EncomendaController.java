@@ -1,7 +1,5 @@
 package com.aim.recanto.CRUD.controller;
 
-import java.util.Date;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,40 +11,35 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.aim.recanto.CRUD.model.Venda;
-import com.aim.recanto.CRUD.service.VendaService;
+import com.aim.recanto.CRUD.model.Encomenda;
+import com.aim.recanto.CRUD.service.EncomendaService;
 
 @Controller
-@RequestMapping("venda")
-public class VendaController {
-	
-	@Autowired
-    private VendaService service;
+@RequestMapping("encomenda")
+public class EncomendaController {
+
+    @Autowired
+    private EncomendaService service;
      
     @GetMapping("/")
     public ModelAndView findAll() {
          
-        ModelAndView mv = new ModelAndView("venda");
-        mv.addObject("vendas", service.findAll());
+        ModelAndView mv = new ModelAndView("encomenda");
+        mv.addObject("encomendas", service.findAll());
          
         return mv;
     }
      
     @GetMapping("/add")
-    public ModelAndView add(Venda venda) {
-    	if(venda.getData() == null) {
-    		Date today = new Date();    	
-    		venda.setData(today);
-    		System.out.println(venda.getData());
-
-    	}
+    public ModelAndView add(Encomenda encomenda) {
          
-        ModelAndView mv = new ModelAndView("vendaAdd");
-        mv.addObject("venda", venda);
+        ModelAndView mv = new ModelAndView("encomendaAdd");
+        mv.addObject("encomenda", encomenda);
          
         return mv;
     }
-     
+    
+    
     @GetMapping("/edit/{id}")
     public ModelAndView edit(@PathVariable("id") Long id) {
          
@@ -60,13 +53,17 @@ public class VendaController {
          
         return findAll();
     }
- 
+    
     @PostMapping("/save")
-    public ModelAndView save(@Valid Venda venda, BindingResult result) {
-    	
-         service.save(venda);
+    public ModelAndView save(@Valid Encomenda encomenda, BindingResult result) {
+         
+        if(result.hasErrors()) {
+            return add(encomenda);
+        }
+         
+        service.save(encomenda);
          
         return findAll();
     }
-
+     
 }

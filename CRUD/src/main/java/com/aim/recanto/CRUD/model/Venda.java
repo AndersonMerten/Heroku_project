@@ -13,6 +13,7 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+
 @Entity
 public class Venda {
 	
@@ -48,7 +49,7 @@ public class Venda {
 
 
 	public void setValor(float valor) {
-		Valor = valor;
+		Valor = (int)valor;
 	}
 
 

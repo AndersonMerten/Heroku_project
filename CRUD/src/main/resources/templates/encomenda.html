@@ -2,39 +2,39 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" >
- <head th:include="layout :: htmlhead" th:with="title='Devedores'"></head>
+ <head th:include="layout :: htmlhead" th:with="title='Encomendas'"></head>
 <body>
  
   <div th:replace="layout :: navbar">(navbar)</div>
   
     <div class="panel panel-default">
         <div class="panel-heading">
-            <strong> <img class="img-circle" src="https://png.pngtree.com/element_origin_min_pic/17/09/19/d1faf27e162744f62f6781d85e5ef759.jpg" width="50px"> Devedores</strong>
+            <strong> <img class="img-circle" src="https://png.pngtree.com/element_origin_min_pic/17/04/08/c320370b648327eb9d44d0a9698a9307.jpg" width="50px"/> Encomendas</strong>
         </div>
         <div class="panel-body">
             <div class="table-responsive">
                 <table class="table table-sm table-striped table-hover table-bordered">
                     <thead>
                         <tr>
-                            <th>Nome</th>
-                            <th>Valor Devido</th>
+                            <th>Cliente</th>
                             <th>Contato</th>
-                            <th>Observações</th>
+                            <th>Produtos encomendados</th>
+                            <th>valor do pedido</th>
                             <th>Editar</th>
                             <th>Excluir</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="devedor : ${devedores}">
-                            <td th:text="${devedor.nome}"></td>
-                            <td th:text="${devedor.divida}"></td>
-                            <td th:text="${devedor.contato}"></td>
-                            <td th:text="${devedor.observacoes}"></td>
+                        <tr th:each="encomenda : ${encomendas}">
+                            <td th:text="${encomenda.cliente}"></td>
+                            <td th:text="${encomenda.contato}"></td>
+                            <td th:text="${encomenda.pedido}"></td>
+                            <td th:text="${encomenda.valorPedido}"></td>
                             <td>
-                                <a class="btn btn-sm btn-primary" th:href="@{/devedor/edit/{id}(id=${devedor.id})}" >Editar</a>
+                                <a class="btn btn-sm btn-primary" th:href="@{/encomenda/edit/{id}(id=${encomenda.id})}" >Editar</a>
                             </td>
                             <td>
-                            	<a class="delete btn btn-sm btn-danger" th:href="@{/devedor/delete/{id}(id=${devedor.id})}">Excluir</a>
+                            	<a class="delete btn btn-sm btn-danger" th:href="@{/encomenda/delete/{id}(id=${encomenda.id})}">Excluir</a>
                             </td>
                         </tr>
                     </tbody>
@@ -42,7 +42,7 @@
             </div>
         </div>
         <div class="panel-footer">
-            <a class="btn btn-sm btn-success" th:href="@{/devedor/add/}" >Adicionar</a>
+            <a class="btn btn-sm btn-success" th:href="@{/encomenda/add/}" >Adicionar</a>
         </div>
     </div>
     

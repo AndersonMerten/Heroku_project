@@ -29,4 +29,18 @@ public class DevedorService {
     public void delete(Long id) {
         repository.deleteById(id);
     }
+    
+    public int contDevedores() {
+    	List<Devedor> devedores = repository.findAll();
+    	return devedores.size();
+    }
+    
+    public int totalDevido() {
+    	List<Devedor> devedores = repository.findAll();
+    	int dividaTotal = 0;
+    	for (Devedor devedor : devedores) {
+    		dividaTotal +=devedor.getDivida();
+		}
+    	return dividaTotal;
+    }
 }

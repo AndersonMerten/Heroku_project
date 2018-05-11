@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" >
+ <head th:include="layout :: htmlhead" th:with="title='Vendas'"></head>
+<body>
+   <style>
+ .comment {
+	background-color: #FAFAFA;
+	font-style: italic;
+	text-align: center;
+	margin-bottom: 5ch;
+	border-radius: 2px;
+	box-shadow: 0 4px 5px rgba(0, 0, 0, .4), 0 4px 8px rgba(0, 0, 0, .3), 0 4px 8px rgba(0, 0, 0, .2);
+}
+
+.comment-scalable-container,
+.comment-scalable {
+	z-index: 10;
+}
+
+.comment-scalable {
+	transform: scale(1.2);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, .4), 0 6px 12px rgba(0, 0, 0, .3), 0 6px 16px rgba(0, 0, 0, .2);
+}
+
+.comment span.student-name {
+	font-weight: bold;
+}
+
+.comment img {
+	width: 100%;
+	max-width: 256px;
+}
+
+.comment-head {
+	padding: 2ch 0;
+}
+
+.comment-content {
+	padding: 2ch;
+}
+
+.student-comment-header {
+	margin-bottom: 5ch;
+}
+
+.student-comments {
+	padding: 5ch 0;
+}
+ 
+ </style>
+  <div th:replace="layout :: navbar">(navbar)</div>
+  
+<div class="container">
+  <h2>Principais informações do sistema:</h2>
+
+		<div class="row student-comments">
+
+         <div class="student-comment-content">
+
+            <div class="comment-container col-xs-12 col-sm-4">
+               <div class="comment">
+                  <div class="comment-head">
+                     <img class="img-circle" src="https://png.pngtree.com/element_origin_min_pic/17/04/08/c320370b648327eb9d44d0a9698a9307.jpg" alt="Student comments">
+                  </div>
+                  <div class="comment-content">
+                     <p> <span class="student-name">Encomendas:&nbsp;</span>Existem <span th:text="*{qtdEncomendas}"></span> encomendas cadastradas no sistema</p>
+                  </div>
+               </div>
+            </div>
+
+            <div class="comment-container comment-scalable-container col-xs-12 col-sm-4">
+               <div class="comment comment-scalable">
+                  <div class="comment-head">
+                     <img class="img-circle" src="http://files.softicons.com/download/business-icons/financial-accounting-icons-by-artistsvalley/png/256x256/Hot/Money%20Bag.png" alt="Student comments">
+                  </div>
+                  <div class="comment-content">
+                     <p> <span class="student-name">Vendas:&nbsp;</span>Foram vendidas hoje dia <span th:text="*{hoje}"></span>  o valor de R$<span th:text="*{totalVendas}"></span>,00 em plantas</p>
+                  </div>
+               </div>
+            </div>
+
+            <div class="comment-container col-xs-12 col-sm-4">
+               <div class="comment">
+                  <div class="comment-head">
+                     <img class="img-circle" src="https://png.pngtree.com/element_origin_min_pic/17/09/19/d1faf27e162744f62f6781d85e5ef759.jpg" alt="Student comments">
+                  </div>
+                  <div class="comment-content">
+                     <p> <span class="student-name">Devedores:&nbsp;</span><span th:text="*{qtdDevedores}"></span>  pessoas estão devendo um total de R$<span th:text="*{totalDivida}"></span>,00 em produtos</p>
+                  </div>
+               </div>
+            </div>
+
+         </div>
+      </div>
+</div>
+    
+    <div th:include="layout :: footer" id="footer">(footer)</div>
+</body>
+</html>
